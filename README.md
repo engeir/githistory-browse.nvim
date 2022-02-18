@@ -1,0 +1,1 @@
+# githistory-browse.nvim
