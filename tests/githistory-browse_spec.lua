@@ -1,0 +1,11 @@
+describe("githistory-browse", function()
+    it("can be required", function()
+        require("githistory-browse")
+    end)
+
+    it("can open git files in a browser", function()
+        local out = require("githistory-browse").browse_file(vim.fn.expand(filename))
+        print(out)
+        -- assert.is_true(githistory.browse_file())
+    end)
+end)
