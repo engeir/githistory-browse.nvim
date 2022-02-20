@@ -1,0 +1,1 @@
+require"githistory-browse"

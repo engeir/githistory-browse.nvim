@@ -37,11 +37,27 @@ M.browse_file = function()
 
         local out = git_hist .. "/blob/main" .. relative_path .. "/" .. current_file
         vim.api.nvim_command("call netrw#BrowseX('" .. out .. "', netrw#CheckIfRemote())")
+    elseif not isempty(git_remote) then
+        local git_repo = mysplit(git_remote, "/")
+        local repo_name = git_repo[#git_repo]
+        local relative_to_repo = mysplit(current_dir, "/")
+        for i, v in pairs(relative_to_repo) do
+            if v == repo_name then
+                local out = git_hist
+                    .. "/blob/main"
+                    .. "/"
+                    .. table.concat(relative_to_repo, "/", i + 1)
+                    .. "/"
+                    .. current_file
+                vim.api.nvim_command("call netrw#BrowseX('" .. out .. "', netrw#CheckIfRemote())")
+                break
+            end
+        end
     else
         local out = ""
         print("No git repo found")
     end
-    return current_file
+    return out
 end
 
 vim.api.nvim_add_user_command("GhBrowse", M.browse_file, {})
