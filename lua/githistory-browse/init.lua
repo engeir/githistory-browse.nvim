@@ -82,6 +82,6 @@ M.browse_file = function()
     return out
 end
 
-vim.api.nvim_add_user_command("GhBrowse", M.browse_file, {})
+vim.api.nvim_create_user_command("GhBrowse", M.browse_file, {})
 
 return M

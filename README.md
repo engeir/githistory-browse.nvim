@@ -1,5 +1,7 @@
 # githistory-browse.nvim
 
+> This is still a work in progress
+
 Quickly preview files in [githistory.xyz]!
 
 ## Installation
@@ -7,6 +9,9 @@ Quickly preview files in [githistory.xyz]!
 ```viml
 Plug 'engeir/githistory-browse.nvim'
 ```
+
+Then make the command available by calling `require"githistory-browse"` from your
+`init.vim`/`init.lua`.
 
 ## Usage
 
