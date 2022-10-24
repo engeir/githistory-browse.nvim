@@ -86,9 +86,11 @@ M.browse_file = function()
     local _ = vim.fn.system("git rev-parse --is-inside-work-tree")
     if vim.v.shell_error == 0 then
         if not isempty(current_dir) and not isempty(git_local) then
-            local relative_path, _ = replace(current_dir, git_local, "")
+            -- local relative_path, secnd = replace(current_dir, git_local, "")
+            local relative_path2, _ = replace(git_local, current_dir, "")
+            local current_file_short, _ = replace("/" .. current_file, relative_path2, "")
 
-            local out = git_hist .. "/blob/" .. git_default_branch_str .. relative_path .. "/" .. current_file
+            local out = git_hist .. "/blob/" .. git_default_branch_str .. relative_path2 .. current_file_short
             open_url(out)
         elseif not isempty(git_hist) then
             local git_repo = mysplit(git_hist, "/")
